@@ -26,7 +26,7 @@ namespace MusicPlayer
 
 
 
-            Console.ReadLine();
+            
             player.SongMenu();         
                        
             

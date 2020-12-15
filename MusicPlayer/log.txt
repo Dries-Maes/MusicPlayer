@@ -8,3 +8,6 @@ Op 15/12/2020 15:17:03 werd c:\music\pokerface.mp3 afgespeeld.
 Op 15/12/2020 15:49:19 werd c:\music\pokerface.mp3 afgespeeld.
 Op 15/12/2020 15:49:23 werd c:\music\pokerface.mp3 afgespeeld.
 ---------------------------------------------------------------------
+Op 15/12/2020 15:57:41 werd c:\music\pokerface.mp3 afgespeeld.
+Op 15/12/2020 15:58:06 werd c:\music\PrayForYou.mp3 afgespeeld.
+---------------------------------------------------------------------
