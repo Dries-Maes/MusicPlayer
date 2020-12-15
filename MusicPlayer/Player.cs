@@ -25,7 +25,7 @@ namespace MusicPlayer
                 string pathEnd = ".mp3";
                 song = pathFront + songName + pathEnd;
             }
-            while(!File.exists()
+            while(!File.Exists(song));
            
         }
 
