@@ -6,6 +6,7 @@ namespace MusicPlayer
     internal class Player
     {
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
+        private FileReaderWriter readerWriter = new FileReaderWriter();
 
         public string song = "";
         private int volume = 50;
@@ -25,6 +26,7 @@ namespace MusicPlayer
             //static void PlayMusic(string file)
 
             player.URL = song;
+            readerWriter.WriteLog(song);
         }
 
         public void PlayPauseSong()
