@@ -18,7 +18,14 @@ namespace MusicPlayer
 
         }
 
-        
+
+        public void WriteSeparator()
+        {
+            using StreamWriter writer = new StreamWriter(PATH, true);
+            writer.WriteLine("---------------------------------------------------------------------");
+        }
+
+
 
         //public void WriteDataToFile(string textToWriteToFile, string path)
         //{

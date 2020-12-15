@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using WMPLib;
 namespace MusicPlayer
@@ -15,18 +16,15 @@ namespace MusicPlayer
 
 
             Player player = new Player();
-            
-            
-            /*
-            for (int i = 0; i < length; i++)
-            {
 
-            }
-            foreach (var path in Directory.GetFiles(@"C:\music\"))
-            {
-                Console.WriteLine(path); // full path
-                Console.WriteLine(System.IO.Path.GetFileName(path)); // file name
-            }*/
+
+
+            
+            
+
+
+
+
 
             Console.ReadLine();
             player.SongMenu();         

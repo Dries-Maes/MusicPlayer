@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using WMPLib;
 
 namespace MusicPlayer
@@ -10,15 +12,21 @@ namespace MusicPlayer
 
         public string song = "";
         private int volume = 50;
+        List<string> listMp3 = new List<string>();
         //public var input = null;
 
         public void PickSong()
         {
-            Console.WriteLine("Enter the title of a song:");
-            string songName = Console.ReadLine();
-            string pathFront = "c:\\music\\";
-            string pathEnd = ".mp3";
-            song = pathFront + songName + pathEnd;
+            do
+            {
+                Console.WriteLine("Enter the title of a song:");
+                string songName = Console.ReadLine();
+                string pathFront = "c:\\music\\";
+                string pathEnd = ".mp3";
+                song = pathFront + songName + pathEnd;
+            }
+            while(!File.exists()
+           
         }
 
         public void StartSong()
@@ -69,6 +77,7 @@ namespace MusicPlayer
             if (song == "")
             {
                 PrintBanner();
+                player.settings.volume = volume;
                 PickSong();
             }
             do
@@ -114,6 +123,7 @@ namespace MusicPlayer
                         break;
 
                     case ConsoleKey.Q:
+                        readerWriter.WriteSeparator();
                         Environment.Exit(0);
                         break;
 
@@ -165,6 +175,28 @@ namespace MusicPlayer
                     ";
 
             Console.WriteLine(menu);
+        }
+        //////////// playlist methoden
+
+        public void CreatePlaylist()
+        {
+            List<string> list = new List<string>();
+            
+            foreach (var dir in Directory.GetFiles(@"C:\music\"))
+            {
+               list.Add(System.IO.Path.GetFileName(dir));
+            }
+            
+            foreach (string liedje in list)
+            {
+                char lastChar = liedje[liedje.Length - 1];
+                if (lastChar == '3')
+                {
+                    listMp3.Add(liedje);
+                }
+            }
+            
+
         }
     }
 }

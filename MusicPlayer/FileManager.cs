@@ -10,9 +10,12 @@ namespace MusicPlayer
         public void CreateFile(string file)
         {
 
-            //filestream object aanmaken om de stream te kunnen afsluiten zodat ik na het aanmaken van een bestand ik er onmiddellijk ook naar kan wegschrijven. Anders wordt deze file "bezet" door deze methode en kan je er niets aan toevoegen of geen acties op uitvoeren.
-            FileStream fileStream = File.Create(file);
-            fileStream.Close();
+            if(!File.Exists(file))
+            {
+                FileStream fileStream = File.Create(file);
+                fileStream.Close();
+            }
+            
 
         }
 
@@ -24,6 +27,8 @@ namespace MusicPlayer
             }
 
         }
+
+       
 
 
         //Aanmaken van folder indien een folder nog niet bestaat
