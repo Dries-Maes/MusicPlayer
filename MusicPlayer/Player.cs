@@ -51,7 +51,7 @@ namespace MusicPlayer
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Current Playlist:\n");
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(@"╔═════╦═══════════════════════════ ═  ═   ═   -");
 
                 foreach (string song in listMp3)
