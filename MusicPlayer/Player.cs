@@ -10,46 +10,80 @@ namespace MusicPlayer
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
         private FileReaderWriter readerWriter = new FileReaderWriter();
 
+        readonly string path = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\";
+
+        Random random = new Random();
         public string song = "";
         private int volume = 50;
         private List<string> listMp3 = new List<string>();
-        //public var input = null;
 
         public string songTitle { get; set; }
         public string songArtist { get; set; }
 
-        //public void TestDries()
-        //{
-        //    var liedje = TagLib.File.Create($"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\PrayForYou.mp3");
-
-        //    string title = liedje.Tag.Title;
-        //    string artist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
-        //    string prefs = liedje.Tag.Performers[0];
-
-        //    Console.WriteLine($"titel: {title} \nartist: {artist} \nprefs: {prefs}");
-        //}
-
-        
         public void ExtractSongData()
         {
             var liedje = TagLib.File.Create(song);
 
-            songTitle = liedje.Tag.Title;
-            songArtist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
-            //string prefs = liedje.Tag.Performers[0];
+            if (liedje.Tag.Title == null)
+            {
+                songTitle = "Unknown";
+            }
+            else
+            {
+                songTitle = liedje.Tag.Title;
+            }
 
-            //Console.WriteLine($"titel: {title} \nartist: {artist} \nprefs: {prefs}");
+            if (liedje.Tag.AlbumArtists.Length > 0)
+            {
+                songArtist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
+            }
+            else
+            {
+                songArtist = "Unknown";
+            }
         }
 
         public void PickSong()
         {
+            Console.Clear();
+            PrintBanner();
             do
             {
-                Console.WriteLine("Enter the title of a song:");
-                string songName = Console.ReadLine();
-                string pathFront = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\";
-                string pathEnd = ".mp3";
-                song = pathFront + songName + pathEnd;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Current Playlist:\n");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine(@"╔═════╦═══════════════════════════ ═  ═   ═   -");
+
+                foreach (string song in listMp3)
+                {
+                    Console.WriteLine(@"╠" + $"  { listMp3.IndexOf(song) + 1}" + @"  ║  " + $"{song}\n" + @"╠═════╬═══════════════════════════ ═  ═   ═   -");
+                }
+                Console.WriteLine(@"╠" + $"  0" + @"  ║  " + $"Pick a random song!\n" + @"╚═════╩═══════════════════════════ ═  ═   ═   -");
+
+                bool tryParse;
+                int temp;
+                string songName;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                do
+                {
+                    Console.WriteLine("\nPick a song by entering the corresponding number:");
+
+                    tryParse = Int32.TryParse(Console.ReadLine(), out temp);
+                } while (!(tryParse) || !(temp >= 0 && temp <= listMp3.Count));
+
+                if (temp == 0)
+                {
+                    songName = listMp3[random.Next(0, listMp3.Count)];
+                }
+                else
+                {
+                    songName = listMp3[temp - 1];
+                }
+
+                string pathFront = path;
+
+                song = pathFront + songName;
+
                 ExtractSongData();
             }
             while (!File.Exists(song));
@@ -57,8 +91,6 @@ namespace MusicPlayer
 
         public void StartSong()
         {
-            //static void PlayMusic(string file)
-
             player.URL = song;
             readerWriter.WriteLog(song);
         }
@@ -103,6 +135,7 @@ namespace MusicPlayer
             {
                 PrintBanner();
                 player.settings.volume = volume;
+                CreatePlaylist();
                 PickSong();
             }
             do
@@ -153,6 +186,11 @@ namespace MusicPlayer
                         break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+
+                        Console.WriteLine("\n\n-- You entered a wrong key! --");
+                        System.Threading.Thread.Sleep(2000);
+                        Console.ResetColor();
                         break;
                 }
             }
@@ -165,9 +203,9 @@ namespace MusicPlayer
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(@"
                     ══════════════════" +
-            $"  Selected Song: {songTitle}  " + "\n\n" + 
-"                    ══════════════════" + 
-            $"  Selected Artist: {songArtist}  " + "\n\n" +
+            $"  Selected Song: {songTitle}  " + "\n\n" +
+"                    ══════════════════" +
+            $"  Selected Artist: {songArtist}  " + "\n" +
 @"
                     ══════════════════" +
             $"  Selected Volume: {volume}%  \n\n"
@@ -209,7 +247,7 @@ namespace MusicPlayer
         {
             List<string> list = new List<string>();
 
-            foreach (var dir in Directory.GetFiles(@"C:\music\"))
+            foreach (var dir in Directory.GetFiles(path))
             {
                 list.Add(System.IO.Path.GetFileName(dir));
             }
