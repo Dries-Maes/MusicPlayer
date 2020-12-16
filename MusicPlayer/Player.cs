@@ -15,15 +15,30 @@ namespace MusicPlayer
         private List<string> listMp3 = new List<string>();
         //public var input = null;
 
-        public void TestDries()
+        public string songTitle { get; set; }
+        public string songArtist { get; set; }
+
+        //public void TestDries()
+        //{
+        //    var liedje = TagLib.File.Create($"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\PrayForYou.mp3");
+
+        //    string title = liedje.Tag.Title;
+        //    string artist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
+        //    string prefs = liedje.Tag.Performers[0];
+
+        //    Console.WriteLine($"titel: {title} \nartist: {artist} \nprefs: {prefs}");
+        //}
+
+        
+        public void ExtractSongData()
         {
-            var liedje = TagLib.File.Create($"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\PrayForYou.mp3");
+            var liedje = TagLib.File.Create(song);
 
-            string title = liedje.Tag.Title;
-            string artist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
-            string prefs = liedje.Tag.Performers[0];
+            songTitle = liedje.Tag.Title;
+            songArtist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
+            //string prefs = liedje.Tag.Performers[0];
 
-            Console.WriteLine($"titel: {title} \nartist: {artist} \nprefs: {prefs}");
+            //Console.WriteLine($"titel: {title} \nartist: {artist} \nprefs: {prefs}");
         }
 
         public void PickSong()
@@ -35,6 +50,7 @@ namespace MusicPlayer
                 string pathFront = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\";
                 string pathEnd = ".mp3";
                 song = pathFront + songName + pathEnd;
+                ExtractSongData();
             }
             while (!File.Exists(song));
         }
@@ -149,10 +165,12 @@ namespace MusicPlayer
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(@"
                     ══════════════════" +
-            $"  Selected song: {song}  " + "\n" +
+            $"  Selected Song: {songTitle}  " + "\n\n" + 
+"                    ══════════════════" + 
+            $"  Selected Artist: {songArtist}  " + "\n\n" +
 @"
                     ══════════════════" +
-            $"  Selected volume: {volume}%  \n\n"
+            $"  Selected Volume: {volume}%  \n\n"
             );
         }
 
