@@ -12,8 +12,19 @@ namespace MusicPlayer
 
         public string song = "";
         private int volume = 50;
-        List<string> listMp3 = new List<string>();
+        private List<string> listMp3 = new List<string>();
         //public var input = null;
+
+        public void TestDries()
+        {
+            var liedje = TagLib.File.Create(@"C:\music\PrayForYou.mp3");
+
+            string title = liedje.Tag.Title;
+            string artist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
+            string prefs = liedje.Tag.Performers[0];
+
+            Console.WriteLine($"titel: {title} \nartist: {artist} \nprefs: {prefs}");
+        }
 
         public void PickSong()
         {
@@ -25,8 +36,7 @@ namespace MusicPlayer
                 string pathEnd = ".mp3";
                 song = pathFront + songName + pathEnd;
             }
-            while(!File.Exists(song));
-           
+            while (!File.Exists(song));
         }
 
         public void StartSong()
@@ -66,7 +76,6 @@ namespace MusicPlayer
             }
         }
 
-        
         public void StopSong()
         {
             player.controls.stop();
@@ -140,12 +149,11 @@ namespace MusicPlayer
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(@"
                     ══════════════════" +
-            $"  Selected song: {song}  " +"\n"+
+            $"  Selected song: {song}  " + "\n" +
 @"
                     ══════════════════" +
             $"  Selected volume: {volume}%  \n\n"
             );
-            
         }
 
         public void PrintBanner()
@@ -176,17 +184,18 @@ namespace MusicPlayer
 
             Console.WriteLine(menu);
         }
+
         //////////// playlist methoden
 
         public void CreatePlaylist()
         {
             List<string> list = new List<string>();
-            
+
             foreach (var dir in Directory.GetFiles(@"C:\music\"))
             {
-               list.Add(System.IO.Path.GetFileName(dir));
+                list.Add(System.IO.Path.GetFileName(dir));
             }
-            
+
             foreach (string liedje in list)
             {
                 char lastChar = liedje[liedje.Length - 1];
@@ -195,8 +204,6 @@ namespace MusicPlayer
                     listMp3.Add(liedje);
                 }
             }
-            
-
         }
     }
 }

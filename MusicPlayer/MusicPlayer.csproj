@@ -16,4 +16,26 @@
     </COMReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="TagLibSharp" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ExifLib">
+      <HintPath>..\..\..\..\..\Downloads\ImageDataExctract@dastutorials\ExifLib.1.7.0.0\lib\net45\ExifLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\..\..\Downloads\csid3lib-v0.6-src\id3lib\ID3Editor\bin\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Id3Lib">
+      <HintPath>..\..\..\..\..\Downloads\csid3lib-v0.6-src\id3lib\ID3Editor\bin\Release\Id3Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Mp3Lib">
+      <HintPath>..\..\..\..\..\Downloads\csid3lib-v0.6-src\id3lib\ID3Editor\bin\Release\Mp3Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Utils">
+      <HintPath>..\..\..\..\..\Downloads\csid3lib-v0.6-src\id3lib\Utils\bin\Release\Utils.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

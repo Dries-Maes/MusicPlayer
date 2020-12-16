@@ -1,38 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
+using ExifLib;
 using WMPLib;
+using TagLib;
+
 namespace MusicPlayer
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            const string PATH = "C:\\Users\\dminb\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
-
-            FileManager fileManager = new FileManager(); 
-
-            fileManager.CreateFile(PATH);
-
-
             Player player = new Player();
+            player.TestDries();
+            Console.ReadLine();
+           
 
-
-
+            const string PATH = "C:\\Users\\dminb\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
+            FileManager fileManager = new FileManager();
+            fileManager.CreateFile(PATH);
+           
             
-            
-
-
-
-
-
-            
-            player.SongMenu();         
-                       
-            
+            player.SongMenu();
         }
-        
-
-        
     }
 }
