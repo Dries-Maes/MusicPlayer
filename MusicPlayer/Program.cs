@@ -1,5 +1,5 @@
 ﻿using System;
-using ExifLib;
+//using ExifLib;
 using WMPLib;
 using TagLib;
 
@@ -13,8 +13,9 @@ namespace MusicPlayer
             player.TestDries();
             Console.ReadLine();
            
+            //const string PATH = "C:\\Users\\dminb\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
+            string PATH = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
 
-            const string PATH = "C:\\Users\\dminb\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
             FileManager fileManager = new FileManager();
             fileManager.CreateFile(PATH);
            

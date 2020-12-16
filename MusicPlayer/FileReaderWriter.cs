@@ -7,8 +7,9 @@ namespace MusicPlayer
 {
     class FileReaderWriter
     {
-        
-        const string PATH = "C:\\Users\\dminb\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
+
+        //const string PATH = "C:\\Users\\dminb\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
+        readonly string PATH = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
 
         public void WriteLog(string song)
         {

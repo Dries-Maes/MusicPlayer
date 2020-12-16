@@ -17,7 +17,7 @@ namespace MusicPlayer
 
         public void TestDries()
         {
-            var liedje = TagLib.File.Create(@"C:\music\PrayForYou.mp3");
+            var liedje = TagLib.File.Create($"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\PrayForYou.mp3");
 
             string title = liedje.Tag.Title;
             string artist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
@@ -32,7 +32,7 @@ namespace MusicPlayer
             {
                 Console.WriteLine("Enter the title of a song:");
                 string songName = Console.ReadLine();
-                string pathFront = "c:\\music\\";
+                string pathFront = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\";
                 string pathEnd = ".mp3";
                 song = pathFront + songName + pathEnd;
             }
