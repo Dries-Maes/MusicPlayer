@@ -8,14 +8,11 @@ namespace MusicPlayer
     {
         private static void Main(string[] args)
         {
-            Player player = new Player();
-            
             string PATH = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\log.txt";
-
+            Player player = new Player();            
             FileManager fileManager = new FileManager();
             fileManager.CreateFile(PATH);
-           
-            
+                       
             player.SongMenu();
         }
     }

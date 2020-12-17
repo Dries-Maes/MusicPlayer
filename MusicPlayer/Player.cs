@@ -10,15 +10,16 @@ namespace MusicPlayer
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
         private FileReaderWriter readerWriter = new FileReaderWriter();
 
-        readonly string path = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\";
+        private readonly string path = $"C:\\Users\\{Environment.UserName}\\source\\repos\\MusicPlayer\\MusicPlayer\\music\\";
 
-        Random random = new Random();
+        private Random random = new Random();
         public string song = "";
         private int volume = 50;
         private List<string> listMp3 = new List<string>();
+        const string UNKNOWN = "Unknown";
 
-        public string songTitle { get; set; }
-        public string songArtist { get; set; }
+        public string SongTitle { get; set; }
+        public string SongArtist { get; set; }
 
         public void ExtractSongData()
         {
@@ -26,20 +27,20 @@ namespace MusicPlayer
 
             if (liedje.Tag.Title == null)
             {
-                songTitle = "Unknown";
+                SongTitle = UNKNOWN;
             }
             else
             {
-                songTitle = liedje.Tag.Title;
+                SongTitle = liedje.Tag.Title ;
             }
 
             if (liedje.Tag.AlbumArtists.Length > 0)
             {
-                songArtist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
+                SongArtist = Convert.ToString(liedje.Tag.AlbumArtists[0]);
             }
             else
             {
-                songArtist = "Unknown";
+                SongArtist = UNKNOWN;
             }
         }
 
@@ -203,9 +204,9 @@ namespace MusicPlayer
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(@"
                     ══════════════════" +
-            $"  Selected Song: {songTitle}  " + "\n\n" +
+            $"  Selected Song: {SongTitle}  " + "\n\n" +
 "                    ══════════════════" +
-            $"  Selected Artist: {songArtist}  " + "\n" +
+            $"  Selected Artist: {SongArtist}  " + "\n" +
 @"
                     ══════════════════" +
             $"  Selected Volume: {volume}%  \n\n"

@@ -41,3 +41,9 @@ Op 16/12/2020 15:27:03 werd C:\Users\Seba\source\repos\MusicPlayer\MusicPlayer\m
 Op 16/12/2020 15:31:44 werd C:\Users\Seba\source\repos\MusicPlayer\MusicPlayer\music\pokerfacenotag.mp3 afgespeeld.
 Op 16/12/2020 15:32:11 werd C:\Users\Seba\source\repos\MusicPlayer\MusicPlayer\music\pokerfacenotag.mp3 afgespeeld.
 ---------------------------------------------------------------------
+Op 17/12/2020 08:34:15 werd C:\Users\Seba\source\repos\MusicPlayer\MusicPlayer\music\WhereAreWeRunnin.mp3 afgespeeld.
+---------------------------------------------------------------------
+Op 17/12/2020 08:35:11 werd C:\Users\Seba\source\repos\MusicPlayer\MusicPlayer\music\01 Eraser.mp3 afgespeeld.
+---------------------------------------------------------------------
+Op 17/12/2020 09:04:01 werd C:\Users\Seba\source\repos\MusicPlayer\MusicPlayer\music\pokerface.mp3 afgespeeld.
+---------------------------------------------------------------------
